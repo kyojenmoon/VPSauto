@@ -12,19 +12,19 @@ apt install openvpn nginx php7.0-fpm stunnel4 squid3 dropbear easy-rsa vnstat uf
 MYIP=`ifconfig eth0 | awk 'NR==2 {print $2}'`
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 cd /root
-wget "https://raw.githubusercontent.com/wangzki03/VPSauto/master/tool/plugin.tgz"
-wget "https://raw.githubusercontent.com/wangzki03/VPSauto/master/tool/premiummenu.zip"
+wget "https://raw.githubusercontent.com/kyojenmoon/VPSauto/master/tool/plugin.tgz"
+wget "https://raw.githubusercontent.com/kyojenmoon/VPSauto/master/tool/premiummenu.zip"
 
 # disable ipv6
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 
 
 # set time GMT +8
-ln -fs /usr/share/zoneinfo/Asia/Manila /etc/localtime
+ln -fs /usr/share/zoneinfo/Asia/Malaysia /etc/localtime
 
 # install webmin
 cd
-wget "https://raw.githubusercontent.com/wangzki03/premscript/master/webmin_1.801_all.deb"
+wget "https://raw.githubusercontent.com/kyojenmoon/premscript/master/webmin_1.801_all.deb"
 dpkg --install webmin_1.801_all.deb;
 apt-get -y -f install;
 sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
@@ -33,7 +33,7 @@ service webmin restart
 
 # install screenfetch
 cd
-wget -O /usr/bin/screenfetch "https://raw.githubusercontent.com/wangzki03/VPSauto/master/tool/screenfetch"
+wget -O /usr/bin/screenfetch "https://raw.githubusercontent.com/kyojenmoon/VPSauto/master/tool/screenfetch"
 chmod +x /usr/bin/screenfetch
 echo "clear" >> .profile
 echo "screenfetch" >> .profile
@@ -72,13 +72,13 @@ refresh_pattern ^ftp: 1440 20% 10080
 refresh_pattern ^gopher: 1440 0% 1440
 refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 refresh_pattern . 0 20% 4320
-visible_hostname Wangzki
+visible_hostname Kyojenmoin
 END
 sed -i $MYIP2 /etc/squid/squid.conf;
 
 # setting banner
 rm /etc/issue.net
-wget -O /etc/issue.net "https://raw.githubusercontent.com/wangzki03/premscript/master/issue.net"
+wget -O /etc/issue.net "https://raw.githubusercontent.com/kyojenmoon/premscript/master/issue.net"
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 service ssh restart
@@ -161,7 +161,7 @@ systemctl start openvpn@server
 mkdir -p /home/vps/public_html
 cat > /home/vps/public_html/client.ovpn <<-END
 
-# Created by wang zki
+# Created by KyojenMoon
 auth-user-pass
 client
 dev tun
@@ -186,8 +186,8 @@ cipher none
 auth none
 http-proxy $MYIP 8080
 http-proxy-option CUSTOM-HEADER CONNECT HTTP/1.1
-http-proxy-option CUSTOM-HEADER Host weixin.qq.cn
-http-proxy-option CUSTOM-HEADER X-Forward-Host weixin.qq.cn
+http-proxy-option CUSTOM-HEADER Host m.netflix.com
+http-proxy-option CUSTOM-HEADER X-Forward-Host m.netflix.com
 http-proxy-option CUSTOM-HEADER Connection: Keep-Alive
 http-proxy-option CUSTOM-HEADER Proxy-Connection: keep-alive
 END
@@ -379,11 +379,11 @@ echo "PLEASE WAIT PATIENTLY AND RELOGIN TO YOUR VPS"
 echo " "
 echo "--------------------------- Configuration Setup Server -------------------------"
 echo "                         Copyright HostingTermurah.net                          "
-echo "                                Modified by wangzki                        "
+echo "                                Modified by Kyojenmoon#404                        "
 echo "--------------------------------------------------------------------------------"
 echo ""  | tee -a log-install.txt
 echo "Server Information"  | tee -a log-install.txt
-echo "   - Timezone    : Asia/Manila (GMT +8)"  | tee -a log-install.txt
+echo "   - Timezone    : Asia/Malaysia (GMT +8)"  | tee -a log-install.txt
 echo "   - Fail2Ban    : [ON]"  | tee -a log-install.txt
 echo "   - IPtables    : [ON]"  | tee -a log-install.txt
 echo "   - Auto-Reboot : [OFF]"  | tee -a log-install.txt
@@ -408,7 +408,7 @@ echo "   - Installation Log        : cat /root/log-install.txt"  | tee -a log-in
 echo ""  | tee -a log-install.txt
 echo "   - Webmin                  : http://$MYIP:10000/"  | tee -a log-install.txt
 echo ""
-echo "------------------------------ Modified by Wangzki -----------------------------"
+echo "------------------------------ Modified by Kyojenmoon -----------------------------"
 echo "-----Rebooting your VPS -----"
 sleep 5
 reboot
