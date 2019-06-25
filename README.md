@@ -20,7 +20,7 @@ wget https://raw.githubusercontent.com/kyojenmoon/VPSauto/master/EZmod.sh && chm
 <b>If you get error in ocs install this to the serverthat have error</b><br>
 apt-get install libxml-parser-perl<br><br>
 <b>Ubuntu 16.04 x64 or Debian 8.10 x64Softether Script</b><br>
-wget https://raw.githubusercontent.com/wangzki03/VPSauto/master/SEsetup.sh && chmod +x SEsetup.sh && ./SEsetup.sh<br><br>
+wget https://raw.githubusercontent.com/kyojenmoon/VPSauto/master/SEsetup.sh && chmod +x SEsetup.sh && ./SEsetup.sh<br><br>
 
 <br>
 <b>Debian 9 Autoscript sshvpn</b><br>
