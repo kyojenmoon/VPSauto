@@ -90,8 +90,8 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup 
 mv /etc/nginx/conf.d/vps.conf /etc/nginx/conf.d/vps.conf.backup 
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/wangzki03/VPSauto/master/nginx.conf" 
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/wangzki03/VPSauto/master/vps.conf" 
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/kyojenmoon/VPSauto/master/nginx.conf" 
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/kyojenmoon/VPSauto/master/vps.conf" 
 sed -i 's/cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php5/fpm/php.ini 
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
 
@@ -172,7 +172,7 @@ clear
 echo "=======================================================" | tee -a log-install.txt
 echo "Please login Reseller Panel at http://$MYIP" | tee -a log-install.txt
 echo "" | tee -a log-install.txt
-echo "Auto Script Installer OCS Panels EZ VPN Mod by Wangzki"  | tee -a log-install.txt
+echo "Auto Script Installer OCS Panels 404 VPN Mod by Kyojenmoon"  | tee -a log-install.txt
 
 echo "" | tee -a log-install.txt
 echo "Thanks " | tee -a log-install.txt
