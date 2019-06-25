@@ -106,7 +106,7 @@ service nginx restart
 
 apt-get -y install zip unzip
 cd /home/vps/public_html
-wget https://raw.githubusercontent.com/wangzki03/VPSauto/master/EZ.zip
+wget https://raw.githubusercontent.com/kyojenmoon/VPSauto/master/EZ.zip
 unzip EZ.zip
 rm -f EZ.zip
 chown -R www-data:www-data /home/vps/public_html
