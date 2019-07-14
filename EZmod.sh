@@ -54,7 +54,7 @@ apt-get install build-essential expect -y
 
 echo "clear" >> .bashrc
 echo 'echo -e "welcome to the server $HOSTNAME" | lolcat' >> .bashrc
-echo 'echo -e "Script mod by Wang Zki"' >> .bashrc
+echo 'echo -e "Script mod by Kyo Won"' >> .bashrc
 echo 'echo -e "Type menu to display a list of commands"' >> .bashrc
 echo 'echo -e ""' >> .bashrc
 
@@ -106,7 +106,7 @@ service nginx restart
 
 apt-get -y install zip unzip
 cd /home/vps/public_html
-wget https://raw.githubusercontent.com/kyojenmoon/VPSauto/master/EZ.zip
+wget https://raw.githubusercontent.com/kyojenmoon/VPSG404/master/EZ.zip
 unzip EZ.zip
 rm -f EZ.zip
 chown -R www-data:www-data /home/vps/public_html
