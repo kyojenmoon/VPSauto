@@ -122,7 +122,7 @@ chmod +x /etc/openvpn/ca.crt
 tar -xzvf /root/plugin.tgz -C /usr/lib/openvpn/
 chmod +x /usr/lib/openvpn/*
 cat > /etc/openvpn/server.conf <<-END
-port 1147
+port 7300
 proto tcp
 dev tun
 ca ca.crt
@@ -165,7 +165,7 @@ auth-user-pass
 client
 dev tun
 proto tcp
-remote $MYIP 1147
+remote $MYIP 7300
 persist-key
 persist-tun
 pull
@@ -196,12 +196,12 @@ echo '</ca>' >> /home/vps/public_html/client.ovpn
 
 cat > /home/vps/public_html/OpenVPN-Stunnel.ovpn <<-END
 
-# Created by wang zki
+# Created by Kyo Won
 auth-user-pass
 client
 dev tun
 proto tcp
-remote 127.0.0.1 1147
+remote 127.0.0.1 7300
 route $MYIP 255.255.255.255 net_gateway
 persist-key
 persist-tun
@@ -231,7 +231,7 @@ client = yes
 debug = 6
 
 [openvpn]
-accept = 127.0.0.1:1147
+accept = 127.0.0.1:7300
 connect = $MYIP:587
 TIMEOUTclose = 0
 verify = 0
@@ -251,7 +251,7 @@ client = no
 
 [openvpn]
 accept = 587
-connect = 127.0.0.1:1147
+connect = 127.0.0.1:7300
 cert = /etc/stunnel/stunnel.pem
 
 [dropbear]
@@ -263,7 +263,7 @@ END
 
 #Setting UFW
 ufw allow ssh
-ufw allow 1147/tcp
+ufw allow 7300/tcp
 sed -i 's|DEFAULT_INPUT_POLICY="DROP"|DEFAULT_INPUT_POLICY="ACCEPT"|' /etc/default/ufw
 sed -i 's|DEFAULT_FORWARD_POLICY="DROP"|DEFAULT_FORWARD_POLICY="ACCEPT"|' /etc/default/ufw
 
@@ -389,7 +389,7 @@ echo "   - Auto-Reboot : [OFF]"  | tee -a log-install.txt
 echo "   - IPv6        : [OFF]"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Application & Port Information"  | tee -a log-install.txt
-echo "   - OpenVPN		: TCP 1147 "  | tee -a log-install.txt
+echo "   - OpenVPN		: TCP 7300 "  | tee -a log-install.txt
 echo "   - OpenVPN-Stunnel	: 587 "  | tee -a log-install.txt
 echo "   - Dropbear		: 442"  | tee -a log-install.txt
 echo "   - Stunnel	: 443"  | tee -a log-install.txt
