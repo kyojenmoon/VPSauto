@@ -339,7 +339,7 @@ sed -i '$ i\iptables-restore < /etc/iptables.up.rules' /etc/rc.local
 # Configure menu
 apt-get install unzip
 cd /usr/local/bin/
-wget "https://raw.githubusercontent.com/wangzki03/VPSauto/master/tool/premiummenu.zip" 
+wget "https://raw.githubusercontent.com/kyojenmoon/VPSauto/master/tool/premiummenu.zip" 
 unzip premiummenu.zip
 chmod +x /usr/local/bin/*
 
